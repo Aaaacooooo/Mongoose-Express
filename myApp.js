@@ -12,7 +12,7 @@ let Person;
 
 const createAndSavePerson = (done) => {
   // Creamos una instancia del modelo Person
-  const newPerson = new Person({
+  Person = new Person({
     name: "John Doe",
     age: 30,
     favoriteFoods: ["Pizza", "Burger"]
