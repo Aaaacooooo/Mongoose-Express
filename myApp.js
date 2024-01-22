@@ -20,24 +20,11 @@ const createAndSavePerson = (done) => {
 
   // Save the new person to the database
   newPerson.save((error, savedPerson) => {
-    if (error) {
-      // If there's an error, call done with the error
-      return done(error);
-    }
-
+    if (error) return console.error('Error creating and saving person:', error);
     // If successful, call done with null as the first argument and the saved person as the second
     done(null, savedPerson);
   });
 };
-
-// Example of calling the function
-Person.save((error, data) => {
-  if (error) {
-    console.error('Error creating and saving person:', error);
-  } else {
-    console.log('Person created and saved successfully:', data);
-  }
-});
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
