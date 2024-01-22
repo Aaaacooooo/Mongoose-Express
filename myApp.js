@@ -1,4 +1,5 @@
 require('dotenv').config();
+let Person = require('./personSchema');
 
 const mongoose = require('mongoose');
 
@@ -8,15 +9,13 @@ const uri = process.env.MONGO_URI;
 // Connect to MongoDB Atlas using Mongoose
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let Person;
+let Person = new Person({
+  name: "John Doe",
+  age: 30,
+  favoriteFoods: ["Pizza", "Burger"]
+});
 
 const createAndSavePerson = (done) => {
-  // Creamos una instancia del modelo Person
-  Person = new Person({
-    name: "John Doe",
-    age: 30,
-    favoriteFoods: ["Pizza", "Burger"]
-  });
 
   // Guardamos la nueva persona en la base de datos
   newPerson.save((error, savedPerson) => {
@@ -24,7 +23,7 @@ const createAndSavePerson = (done) => {
       // Si hay un error, llamamos a done con el error
       return done(error);
     }
-    
+
     // Llamamos a done con null como primer argumento y la persona guardada como segundo
     done(null, savedPerson);
   });
