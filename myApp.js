@@ -11,8 +11,29 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 let Person;
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  // Creamos una instancia del modelo Person
+  const newPerson = new Person({
+    name: "John Doe",
+    age: 30,
+    favoriteFoods: ["Pizza", "Burger"]
+  });
+
+  // Guardamos la nueva persona en la base de datos
+  newPerson.save((error, savedPerson) => {
+    if (error) {
+      // Si hay un error, llamamos a done con el error
+      return done(error);
+    }
+    
+    // Llamamos a done con null como primer argumento y la persona guardada como segundo
+    done(null, savedPerson);
+  });
 };
+
+
+// const createAndSavePerson = (done) => {
+//   done(null /*, data*/);
+// };
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
