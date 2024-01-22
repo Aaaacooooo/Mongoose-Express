@@ -1,13 +1,31 @@
 require('dotenv').config();
-const Person = require('./Person');
+
+/** 1) Install & Set up mongoose */
 
 const mongoose = require('mongoose');
-
-// URI from MongoDB Atlas
 const uri = process.env.MONGO_URI;
-
 // Connect to MongoDB Atlas using Mongoose
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+/** 2) Create a 'Person' Model */
+const personSchema = new mongoose.Schema({
+  name: {
+      type: String,
+      required: true
+  },
+  age: {
+      type: Number
+  },
+  favoriteFoods: {
+      type: [String]
+  }
+});
+
+const Person = mongoose.model('Person', personSchema);
+
+
+
+
 
 
 
