@@ -30,9 +30,14 @@ const createAndSavePerson = (done) => {
   });
 };
 
-// const createAndSavePerson = (done) => {
-//   done(null /*, data*/);
-// };
+// Example of calling the function
+Person.save((error, data) => {
+  if (error) {
+    console.error('Error creating and saving person:', error);
+  } else {
+    console.log('Person created and saved successfully:', data);
+  }
+});
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
