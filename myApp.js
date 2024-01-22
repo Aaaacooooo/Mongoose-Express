@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 // URI from MongoDB Atlas
-const uri = "mongodb+srv://dbUser:<dbUserPassword>@atlascluster.cwtvplm.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI;
 
 // Connect to MongoDB Atlas using Mongoose
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
