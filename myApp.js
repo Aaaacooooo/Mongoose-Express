@@ -6,24 +6,7 @@ const mongoose = require('mongoose');
 const uri = "mongodb+srv://dbUser:<dbUserPassword>@atlascluster.cwtvplm.mongodb.net/?retryWrites=true&w=majority";
 
 // Connect to MongoDB Atlas using Mongoose
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-})
-  .then(() => {
-    console.log("Connected to MongoDB Atlas");
-
-    // Add your database operations here...
-
-  })
-  .catch((error) => {
-    console.error("Error connecting to MongoDB Atlas:", error);
-  });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let Person;
 
