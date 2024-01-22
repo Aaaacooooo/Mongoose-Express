@@ -1,5 +1,5 @@
 require('dotenv').config();
-const Person = require('./personSchema');
+const Person = require('./Person');
 
 const mongoose = require('mongoose');
 
@@ -10,22 +10,23 @@ const uri = process.env.MONGO_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
+
 const createAndSavePerson = (done) => {
   // Create a new instance of the Person model
-  const newPerson = new Person({
+  const JohnDoe = new Person({
     name: 'John Doe',
     age: 30,
     favoriteFoods: ['Pizza', 'Burger']
   });
-
+  
   // Save the new person to the database
-  newPerson.save((error, savedPerson) => {
+  JohnDoe.save((error, data) => {
     if (error) {
       console.error('Error creating and saving person:', error);
-      done(error); // Asegúrate de llamar a done con el error
+      done(error);
     } else {
       console.log('Person created and saved successfully:', savedPerson);
-      done(null, savedPerson);
+      done(null, data);
     }
   });
   
