@@ -23,13 +23,6 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema);
 
-
-
-
-
-
-
-
 const createAndSavePerson = (done) => {
   // Create a new instance of the Person model
   const JohnDoe = new Person({
