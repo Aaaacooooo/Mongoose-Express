@@ -3,9 +3,10 @@ require('dotenv').config();
 /** 1) Install & Set up mongoose */
 
 const mongoose = require('mongoose');
-const uri = process.env.MONGO_URI;
+
 // Connect to MongoDB Atlas using Mongoose
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://acoray:1234@atlascluster.cwtvplm.mongodb.net/?retryWrites=true&w=majority'
+, { useNewUrlParser: true, useUnifiedTopology: true });
 
 /** 2) Create a 'Person' Model */
 const personSchema = new mongoose.Schema({
