@@ -33,14 +33,9 @@ const createAndSavePerson = (done) => {
   });
   
   // Save the new person to the database
-  JohnDoe.save((error, data) => {
-    if (error) {
-      console.error('Error creating and saving person:', error);
-      done(error);
-    } else {
-      console.log('Person created and saved successfully:', savedPerson);
-      done(null, data);
-    }
+  JohnDoe.save(function(err, data) {
+    if (err) return console.error(err);
+    done(null, data)
   });
   
 };
